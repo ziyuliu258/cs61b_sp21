@@ -1,0 +1,308 @@
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /c/Users/ziyuliu258
+$ cd ~
+
+刘子语@DESKTOP-TLBKH7R MINGW64 ~
+$ git config
+error: no action specified
+
+刘子语@DESKTOP-TLBKH7R MINGW64 ~
+$ git config --global
+error: no action specified
+
+刘子语@DESKTOP-TLBKH7R MINGW64 ~
+$ git config --global user.name
+ziyuliu258
+
+刘子语@DESKTOP-TLBKH7R MINGW64 ~
+$ git config --global user.email
+1209830516abc@gmail.com
+
+刘子语@DESKTOP-TLBKH7R MINGW64 ~
+$ cd ..
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f
+$ mkdir 61bsp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f
+$ git clone git@github.com:ziyuliu258/cs61b_sp21.git
+Cloning into 'cs61b_sp21'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f
+$ cd 61bsp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ git clone git@github.com:ziyuliu258/cs61b_sp21.git
+Cloning into 'cs61b_sp21'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ cd cs61b_sp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote add skeleton git@github.com:Berkeley-CS61B/library-sp21.git
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote -v
+origin  git@github.com:ziyuliu258/cs61b_sp21.git (fetch)
+origin  git@github.com:ziyuliu258/cs61b_sp21.git (push)
+skeleton        git@github.com:Berkeley-CS61B/library-sp21.git (fetch)
+skeleton        git@github.com:Berkeley-CS61B/library-sp21.git (push)
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull skeleton master
+remote: Enumerating objects: 366, done.
+remote: Counting objects: 100% (366/366), done.
+remote: Compressing objects: 100% (198/198), done.
+remote: Total 366 (delta 133), reused 366 (delta 133), pack-reused 0 (from 0)
+Receiving objects: 100% (366/366), 28.54 MiB | 1.43 MiB/s, done.
+Resolving deltas: 100% (133/133), done.
+From github.com:Berkeley-CS61B/library-sp21
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> skeleton/master
+fatal: refusing to merge unrelated histories
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote add skeleton git@github.com:Berkeley-CS61B/skeleton-sp21.git
+error: remote skeleton already exists.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote rm skeleton
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote add skeleton git@github.com:Berkeley-CS61B/skeleton-sp21.git
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git remote -v
+origin  git@github.com:ziyuliu258/cs61b_sp21.git (fetch)
+origin  git@github.com:ziyuliu258/cs61b_sp21.git (push)
+skeleton        git@github.com:Berkeley-CS61B/skeleton-sp21.git (fetch)
+skeleton        git@github.com:Berkeley-CS61B/skeleton-sp21.git (push)
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull skeleton master
+remote: Enumerating objects: 360, done.
+Rremote: Total 360 (delta 0), reused 0 (delta 0), pack-reused 360 (from 1)
+Receiving objects: 100% (360/360), 509.93 KiB | 288.00 KiB/s, done.
+Resolving deltas: 100% (126/126), done.
+From github.com:Berkeley-CS61B/skeleton-sp21
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> skeleton/master
+fatal: refusing to merge unrelated histories
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull --rebase --allow-unrelated-histories skeleton master
+From github.com:Berkeley-CS61B/skeleton-sp21
+ * branch            master     -> FETCH_HEAD
+Successfully rebased and updated refs/heads/master.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ cd..
+bash: cd..: command not found
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ cd ..
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ git clone https://github.com/Berkeley-CS61B/library-sp21
+Cloning into 'library-sp21'...
+remote: Enumerating objects: 366, done.
+remote: Counting objects: 100% (366/366), done.
+remote: Compressing objects: 100% (198/198), done.
+remote: Total 366 (delta 133), reused 366 (delta 133), pack-reused 0 (from 0)
+Receiving objects: 100% (366/366), 28.54 MiB | 4.15 MiB/s, done.
+Resolving deltas: 100% (133/133), done.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ cd cs61b_sp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git clone https://github.com/Berkeley-CS61B/library-sp21
+Cloning into 'library-sp21'...
+remote: Enumerating objects: 366, done.
+remote: Counting objects: 100% (366/366), done.
+remote: Compressing objects: 100% (198/198), done.
+remote: Total 366 (delta 133), reused 366 (delta 133), pack-reused 0 (from 0)
+Receiving objects: 100% (366/366), 28.54 MiB | 8.14 MiB/s, done.
+Resolving deltas: 100% (133/133), done.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 45 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git add .
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 45 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull origin master
+From github.com:ziyuliu258/cs61b_sp21
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 45 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git push origin master
+To github.com:ziyuliu258/cs61b_sp21.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'github.com:ziyuliu258/cs61b_sp21.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull origin master
+From github.com:ziyuliu258/cs61b_sp21
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull --rebase --allow-unrelated-histories origin master
+From github.com:ziyuliu258/cs61b_sp21
+ * branch            master     -> FETCH_HEAD
+warning: skipped previously applied commit 1ca7b56
+hint: use --reapply-cherry-picks to include skipped commits
+hint: Disable this message with "git config advice.skippedCherryPicks false"
+warning: unable to rmdir 'library-sp21': Directory not empty
+Successfully rebased and updated refs/heads/master.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ cd library-sp21
+rm -rf *
+cd ..
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git pull origin master
+From github.com:ziyuliu258/cs61b_sp21
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ cd ..
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ git clone https://github.com/Berkeley-CS61B/library-sp21
+Cloning into 'library-sp21'...
+remote: Enumerating objects: 366, done.
+remote: Counting objects: 100% (366/366), done.
+remote: Compressing objects: 100% (198/198), done.
+remote: Total 366 (delta 133), reused 366 (delta 133), pack-reused 0 (from 0)
+Receiving objects: 100% (366/366), 28.54 MiB | 7.10 MiB/s, done.
+Resolving deltas: 100% (133/133), done.
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21
+$ cd cs61b_sp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 41 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    library-sp21
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git add .
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 41 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    library-sp21
+
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git commit -m "initial setup"
+[master faabaf4] initial setup
+ 1 file changed, 1 deletion(-)
+ delete mode 160000 library-sp21
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git push origin master
+Enumerating objects: 358, done.
+Counting objects: 100% (358/358), done.
+Delta compression using up to 32 threads
+Compressing objects: 100% (255/255), done.
+Writing objects: 100% (357/357), 509.44 KiB | 1.38 MiB/s, done.
+Total 357 (delta 130), reused 273 (delta 93), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (130/130), done.
+To github.com:ziyuliu258/cs61b_sp21.git
+   344a1f2..faabaf4  master -> master
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git fetch skeleton
+
+刘子语@DESKTOP-TLBKH7R MINGW64 /f/61bsp21/cs61b_sp21 (master)
+$ git log
+commit faabaf44885fd2acbceec332a13f0ea661ba6ecd (HEAD -> master, origin/master, origin/HEAD)
+Author: ziyuliu258 <1209830516abc@gmail.com>
+Date:   Sun Oct 6 17:24:07 2024 +0800
+
+    initial setup
+
+commit 5e0c7667e3d543de163825b5d156fd3ec71ea90a
+Author: BorenTsai <nicholastsai13@gmail.com>
+Date:   Thu Apr 22 19:48:25 2021 -0700
+
+    add Networking to proj3 for remote game sharing
+
+commit 2bad19ee2d66ab58fcc16a969d11bf5be00bc997
+Author: Eric Zhu <eric.zhu@berkeley.edu>
+Date:   Thu Apr 22 13:00:07 2021 -0700
+
+    allow wav files in gitignore
+
+commit a655f26546203d73a186158269aae895be640b24
+Author: Eric Zhu <eric.zhu@berkeley.edu>
+Date:   Sun Apr 18 21:29:18 2021 -0700
+
+    update .gitignore for proj3 group repos
+
+commit f65504bfa9e58b424a0f0bef998c471f62169043
+Author: BorenTsai <35507350+BorenTsai@users.noreply.github.com>
+Date:   Mon Apr 5 09:35:12 2021 -0700
+
+    Include project3prep.md
+:
