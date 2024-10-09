@@ -77,7 +77,10 @@ public class IntListExercises {
         if (currElemIsPrime) {
             lst.first *= lst.first;
         }
-
-        return currElemIsPrime || squarePrimes(lst.rest);
+        boolean restPrime=squarePrimes(lst.rest);
+        /*
+        * '||' makes it that when currElemIsPrime==true, something after '||' will not be executed.
+        * Therefore, when a list "3,2,4,5,6" is the input variable, it will quit after squaring 3. */
+        return currElemIsPrime || restPrime;
     }
 }
