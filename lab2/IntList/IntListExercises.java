@@ -10,13 +10,12 @@ public class IntListExercises {
      */
     public static void addConstant(IntList lst, int c) {
         IntList head = lst;
-        while (head.rest != null) {
+        while (head != null) {
             head.first += c;
             head = head.rest;
         }
-        if(lst.size()>0)
-            head.first+=c;
     }
+
 
     /**
      * Part B: Buggy method that sets node.first to zero if
