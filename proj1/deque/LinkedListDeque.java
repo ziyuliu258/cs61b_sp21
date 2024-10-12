@@ -18,11 +18,26 @@ public class LinkedListDeque <T> {
 
     /*There might be something wrong with add methods,but I currently can't figure it out.*/
     public void addFirst(T elem){
-        sentinel.next=new DNode<>(elem,sentinel,sentinel.next);
+        DNode<T> newnode=new DNode<>(elem,sentinel,sentinel.next);
+        //if size()==0, newnode.prev=sentinel=null,newnode.next=sentinel
+        if(size()==0) {
+            last=newnode;
+            last.next=sentinel;
+            sentinel.prev=newnode;
+            sentinel.next=newnode;//these 2 lines deal with the problem of sentinel node
+        }
+        else{
+            sentinel.next.prev=newnode;
+            sentinel.next=newnode;
+        }
         Lsize++;
     }
     public void addLast(T elem){
-        last.prev=new DNode<>(elem,last.prev,last);
+        DNode<T> newnode=new DNode<>(elem,last,sentinel);
+        if(size()==0){
+            sentinel.prev=newnode;
+
+        }
         Lsize++;
     }
 
