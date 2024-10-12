@@ -1,5 +1,9 @@
 package deque;
 
+import java.util.Deque;
+
+import static org.junit.Assert.assertEquals;
+
 public class LinkedListDeque <T> {
     private DNode<T> sentinel;
     private DNode<T> last;
@@ -8,58 +12,65 @@ public class LinkedListDeque <T> {
         Lsize=0;
         sentinel=new DNode<>(null,null,null);
         last=new DNode<>(null,null,null);
-        sentinel.next=sentinel;
-        sentinel.prev=sentinel;
-        last=sentinel;
+        sentinel.next=last;
+        sentinel.prev=last;
+        last.next=sentinel;
+        last.prev=sentinel;
+        /*revised the method. sentinel and last might be two separate node,
+        which is better than two pointing to the same address.*/
     }
     public int size(){
         return Lsize;
     }
 
-    /*There might be something wrong with add methods,but I currently can't figure it out.*/
+    /*I think this time maybe I will solve it.*/
     public void addFirst(T elem){
         DNode<T> newnode=new DNode<>(elem,sentinel,sentinel.next);
-        //if size()==0, newnode.prev=sentinel=null,newnode.next=sentinel
-        if(size()==0) {
-            last=newnode;
-            last.next=sentinel;
-            sentinel.prev=newnode;
-            sentinel.next=newnode;//these 2 lines deal with the problem of sentinel node
-        }
-        else{
-            sentinel.next.prev=newnode;
-            sentinel.next=newnode;
-        }
+        sentinel.next.prev=newnode;
+        sentinel.next=newnode;
         Lsize++;
     }
     public void addLast(T elem){
         DNode<T> newnode=new DNode<>(elem,last,sentinel);
-        if(size()==0){
-            sentinel.prev=newnode;
-
-        }
+        last.prev.next=newnode;
+        last.prev=newnode;
         Lsize++;
     }
 
     public T removeLast(){
         if(size()==0)
             return null;
-        DNode<T> tmp=last;
-        last=last.prev;
-        last.next=sentinel;
-        sentinel.prev=last;//that is an easy-to-forget point!
+
+        /*DNode<T> tmp=last.prev;
+        last.prev=last.prev.prev;
         Lsize--;
-        return tmp.data;
+        return tmp.data;*/
+        /* that may be wrong as java may automatically recycle the value of tmp when line
+        * "last.prev=last.prev.prev" is executed.
+        * So try removing the tmp form.*/
+
+        T rtvalue=last.prev.data;
+        last.prev=last.prev.prev;
+        Lsize--;
+        /*
+        The Key is that if size==(1) it will cause a fault as the line
+        * "last.prev.next=last" might make a null pointer point at another node.
+        * */
+
+        //so im gonna add a judging branch to fix it.
+
+        //lines above are changes
+        return rtvalue;
     }
     public T removeFirst(){
         if(size()==0){
             return null;
         }
-        else{
-            DNode<T> tmp=sentinel.next;
-            sentinel.next=sentinel.next.next;
-            return tmp.data;
-        }
+        T rtValue=sentinel.next.data;
+
+        sentinel.next=sentinel.next.next;//trash the variable tmp
+        Lsize--;//last version didn't include this
+        return rtValue;
     }
 
     public boolean isEmpty(){
@@ -74,8 +85,38 @@ public class LinkedListDeque <T> {
         }
     }
 
+    //test module
 
+    public static void main(String[] args) {
+        LinkedListDeque<Integer> tlist = new LinkedListDeque<Integer>();
+        for (int i = 0; i < 4; i++) {
+            tlist.addLast(i);
+        }
+        for (double i = 0; i < 2; i++) {
+            System.out.print(i + " ");
+            System.out.println((double) tlist.removeFirst());
+        }
+        for (double i = 3; i > 2; i--) {
+            System.out.print(i + " ");
+            System.out.println((double) tlist.removeLast());
+        }
+    }
+    /*
+        finally,the problem lies in method removeLast
+        the error info is as follows:
+
+        46.0 46.0
+        47.0 47.0
+        48.0 48.0
+        49.0 49.0
+        99.0 99.0
+        98.0 Exception in thread "main" java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "deque.LinkedListDeque.removeLast()" is null
+            at deque.LinkedListDeque.main(LinkedListDeque.java:82)
+    }
+
+     */
 }
+
 class DNode<T> {
     T data;
     DNode<T> next;
