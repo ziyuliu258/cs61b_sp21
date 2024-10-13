@@ -1,8 +1,10 @@
 package deque;
 
-import java.util.Deque;
+/**Currently,this is the two-sentinel approach,mixing the two approaches up.
+ * maybe sometimes I will use the circular approach.
+ *
+ */
 
-import static org.junit.Assert.assertEquals;
 
 public class LinkedListDeque <T> {
     private DNode<T> sentinel;
@@ -104,29 +106,18 @@ public class LinkedListDeque <T> {
             System.out.println((double) tlist.removeLast());
         }
     }
-    /*
-        finally,the problem lies in method removeLast
-        the error info is as follows:
 
-        46.0 46.0
-        47.0 47.0
-        48.0 48.0
-        49.0 49.0
-        99.0 99.0
-        98.0 Exception in thread "main" java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" because the return value of "deque.LinkedListDeque.removeLast()" is null
-            at deque.LinkedListDeque.main(LinkedListDeque.java:82)
-    }
-
-     */
+    private static class DNode<T> {//add that DNode is static and private
+        T data;
+        DNode<T> next;
+        DNode<T> prev;
+        public DNode(T elem,DNode<T> P,DNode<T> N){
+            data=elem;
+            prev=P;
+            next=N;
+        }
+    }//HELPER CLASS REQUIRED
+    //Put it inside the big class making the class file more integral
 }
 
-class DNode<T> {
-    T data;
-    DNode<T> next;
-    DNode<T> prev;
-    public DNode(T elem,DNode<T> P,DNode<T> N){
-        data=elem;
-        prev=P;
-        next=N;
-    }
-}//HELPER CLASS REQUIRED
+
