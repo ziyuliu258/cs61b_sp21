@@ -31,7 +31,7 @@ public class LinkedListDeque <T> {
         Lsize++;
     }
     public void addLast(T elem){
-        DNode<T> newnode=new DNode<>(elem,last,sentinel);
+        DNode<T> newnode=new DNode<>(elem,last.prev,last);
         last.prev.next=newnode;
         last.prev=newnode;
         Lsize++;
@@ -51,6 +51,7 @@ public class LinkedListDeque <T> {
 
         T rtvalue=last.prev.data;
         last.prev=last.prev.prev;
+        last.prev.next=last;//be cautious
         Lsize--;
         /*
         The Key is that if size==(1) it will cause a fault as the line
@@ -68,7 +69,9 @@ public class LinkedListDeque <T> {
         }
         T rtValue=sentinel.next.data;
 
-        sentinel.next=sentinel.next.next;//trash the variable tmp
+        sentinel.next=sentinel.next.next;
+        sentinel.next.prev=sentinel;//be cautious
+        //trash the variable tmp
         Lsize--;//last version didn't include this
         return rtValue;
     }
@@ -80,7 +83,7 @@ public class LinkedListDeque <T> {
     public void printDeque(){
         if(size()==0)
             return;
-        for(DNode<T> i=sentinel.next;i!=sentinel;i=i.next){
+        for(DNode<T> i=sentinel.next;i!=last;i=i.next){
             System.out.println(i.data.toString());
         }
     }
@@ -88,15 +91,15 @@ public class LinkedListDeque <T> {
     //test module
 
     public static void main(String[] args) {
-        LinkedListDeque<Integer> tlist = new LinkedListDeque<Integer>();
-        for (int i = 0; i < 4; i++) {
+        LinkedListDeque<Integer> tlist = new LinkedListDeque<>();
+        for (int i = 0; i < 8; i++) {
             tlist.addLast(i);
         }
-        for (double i = 0; i < 2; i++) {
+        for (double i = 0; i < 4; i++) {
             System.out.print(i + " ");
             System.out.println((double) tlist.removeFirst());
         }
-        for (double i = 3; i > 2; i--) {
+        for (double i = 7; i > 4; i--) {
             System.out.print(i + " ");
             System.out.println((double) tlist.removeLast());
         }
