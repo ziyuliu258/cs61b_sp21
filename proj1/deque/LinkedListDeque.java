@@ -140,6 +140,24 @@ public class LinkedListDeque<T>{
         }
     }
 
+    public T getRecursive(int index){//using recursion but not iteration
+        if(index<0||index>=size())
+            return null;
+        else{
+            int count=0;
+            DNode<T> tmp=sentinel.next;
+            return recurseHelper(tmp,count,index);
+        }
+    }
+    private T recurseHelper(DNode<T> node,int current,int target){
+        if(current==target)
+            return node.data;
+        else{
+            return recurseHelper(node.next,current+1,target);
+        }
+    }
+
+
     private static class DNode<T> {//add that DNode is static and private
         T data;
         DNode<T> next;
