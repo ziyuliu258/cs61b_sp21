@@ -1,7 +1,7 @@
 package deque;
 
 /*
-* addLast,addFirst,isEmpty,size,printDeque,removeFirst,removelast
+* addLast,addFirst,isEmpty,size,printDeque,removeFirst,removeLast
 * get(index)*/
 
 /*For arrays of length 16 or more, your usage factor should always be at least 25%.
@@ -10,35 +10,58 @@ will bring the number of elements in the array under 25% the length of the array
 you should resize the size of the array down.
 For smaller arrays, your usage factor can be arbitrarily low.*/
 
+//when realising the circular way, %elems.length instead of %size()!!!
+
 public class ArrayDeque<T>{
     private T[] elems;
     private int front;
     private int rear;
+    private int size;
     public ArrayDeque(){
         front=0;
-        rear=-1;
+        rear=0;
+        size=0;
         elems=(T[]) new Object[8];
         /*can't directly create a generic array,
         * so make an Object one and convert it to type T*/
+        /*don't have to make rear plus -1 as it will make it difficult to first addfirst*/
     }
     public int size(){
-        return rear-front+1;
+        return size;
     }
     public boolean isEmpty(){
         return (size()==0);
     }
     public void addLast(T item){
-        elems[(rear=++rear%size())]=item;
+        if(size()==0){
+            elems[rear]=item;
+            size++;
+        }
+        else {
+            elems[(rear = ++rear % elems.length)] = item;
+            size++;
+        }
     }
     public void addFirst(T item){
-        elems[(--front<0?front+size():front)]=item;
+        if(size()==0){
+            elems[front]=item;
+            size++;
+        }
+        else {
+            elems[(--front < 0 ? front + elems.length : front)] = item;
+            front=front<0?front+elems.length:front;
+            size++;
+        }
     }
     public T removeFirst(){
         if(isEmpty())
             return null;
         T tmp=elems[front];
         elems[front]=null;
-        front=(front+1)%size();
+        if(size()>1){
+            front=(front+1)% elems.length;
+        }
+        size--;
         return tmp;
     }
     public T removeLast(){
@@ -46,7 +69,9 @@ public class ArrayDeque<T>{
             return null;
         T tmp=elems[rear];
         elems[rear]=null;
-        rear=(rear-1)%size();
+        if(size()==1)
+            rear=(--rear+ elems.length)% elems.length;
+        size--;
         return tmp;
     }
     public T getFirst(){
@@ -62,15 +87,15 @@ public class ArrayDeque<T>{
             return elems[rear];
     }
     public void printDeque(){
-        for(T i=elems[front];i!=null;i=elems[(front+1)%size()]){
-            System.out.println(i.toString());
+        for(int index=front;index!=(rear+1+ elems.length)% elems.length;index=(++index+ elems.length)% elems.length){
+            System.out.println(elems[index].toString());
         }
     }
     public T get(int index){
         if(index>size())
             return null;
         else{
-            return elems[(front+index)%size()];
+            return elems[(front+index)% elems.length];
         }
     }
 }
