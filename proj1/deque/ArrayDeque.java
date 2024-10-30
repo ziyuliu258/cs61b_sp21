@@ -17,6 +17,7 @@ public class ArrayDeque<T>{
     private int front;
     private int rear;
     private int size;
+
     public ArrayDeque(){
         front=0;
         rear=0;
@@ -38,6 +39,7 @@ public class ArrayDeque<T>{
             size++;
         }
         else {
+            resize();
             elems[(rear = ++rear % elems.length)] = item;
             size++;
         }
@@ -48,6 +50,7 @@ public class ArrayDeque<T>{
             size++;
         }
         else {
+            resize();
             elems[(--front < 0 ? front + elems.length : front)] = item;
             front=front<0?front+elems.length:front;
             size++;
@@ -62,6 +65,7 @@ public class ArrayDeque<T>{
             front=(front+1)% elems.length;
         }
         size--;
+        resize();
         return tmp;
     }
     public T removeLast(){
@@ -69,9 +73,10 @@ public class ArrayDeque<T>{
             return null;
         T tmp=elems[rear];
         elems[rear]=null;
-        if(size()==1)
+        if(size()>1)
             rear=(--rear+ elems.length)% elems.length;
         size--;
+        resize();
         return tmp;
     }
     public T getFirst(){
@@ -96,6 +101,26 @@ public class ArrayDeque<T>{
             return null;
         else{
             return elems[(front+index)% elems.length];
+        }
+    }
+    private void resize(){
+        if(elems.length>=16&&size()*4<elems.length){
+            T[] newElems=(T[])new Object[size()*2];
+            for(int i=0;i<size();i++){
+                newElems[i]=get(i);
+            }
+            elems=newElems;
+            front=0;
+            rear= (front+size()-1+ elems.length)% elems.length;
+        }
+        if(size()== elems.length){
+            T[] newElems=(T[])new Object[size()*2];
+            for(int i=0;i<size();i++){
+                newElems[i]=get(i);
+            }
+            elems=newElems;
+            front=0;
+            rear= (front+size()-1+ elems.length)% elems.length;
         }
     }
 }

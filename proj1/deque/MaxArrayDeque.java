@@ -16,8 +16,10 @@ public T get(int index) */
 import java.util.Comparator;
 
 public class MaxArrayDeque<T> {
-    public MaxArrayDeque(Comparator<T> c){
+    T[] elems;
+    int size;
 
+    public MaxArrayDeque(Comparator<T> c){
 
     }
 }
